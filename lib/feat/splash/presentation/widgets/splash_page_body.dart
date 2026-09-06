@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sacny/core/constant/colors_app.dart';
+import 'package:sacny/core/constant/images_app.dart';
 import 'package:sacny/core/helper/app_router.dart';
 // قم باستيراد صفحة الـ Onboarding الخاصة بك هنا
 // import 'package:sacny/features/onboarding/presentation/views/on_boarding_page.dart';
@@ -11,13 +12,7 @@ class SplashPageBody extends StatefulWidget {
   const SplashPageBody({super.key});
 
   @override
-  State<SplashPageBody> meState() => _SplashPageBodyState();
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
+  State<SplashPageBody> createState() => _SplashPageBodyState();
 }
 
 class _SplashPageBodyState extends State<SplashPageBody> {
@@ -42,7 +37,7 @@ class _SplashPageBodyState extends State<SplashPageBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppCloros.primColor,
+      backgroundColor: AppColors.primaryGreen,
       body: Center(
         child: TweenAnimationBuilder<double>(
           duration: const Duration(milliseconds: 900),
@@ -61,7 +56,7 @@ class _SplashPageBodyState extends State<SplashPageBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/logo_app.png',
+                ImagesApp.LogoApp, // استبدل 'logo.png' بمسار الصورة الفعلي لشعار التطبيق ,
                 width: 200,
                 height: 200,
               ),
