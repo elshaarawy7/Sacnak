@@ -2,6 +2,7 @@
 
 import 'package:go_router/go_router.dart';
 import 'package:sacny/feat/auth/presentation/pages/login_page.dart';
+import 'package:sacny/feat/auth/presentation/pages/register_page.dart';
 import 'package:sacny/feat/onbourding/presentation/pages/on_bording_page.dart';
 import 'package:sacny/feat/onbourding/presentation/pages/onbourding_page_tow.dart';
 import 'package:sacny/feat/splash/presentation/pages/splash_page.dart';
@@ -12,6 +13,7 @@ class AppRouter {
   static const String onBordingRoute = '/onBordingPage';
   static const String onBordingPageTow = '/onBordingPageTow'; 
   static const String LoginPageRote = '/LoginPage' ;
+  static const String registerRoute = '/registerPage' ;
 
   static final GoRouter router = GoRouter(
     initialLocation: splashRoute,
@@ -34,7 +36,12 @@ class AppRouter {
       GoRoute(
         path: LoginPageRote,
         builder: (context, state) => const LoginPage(),
-      )
+      ),
+
+      GoRoute(
+        path: registerRoute,
+        builder: (context, state) => const RegisterPage(),
+      ),
     ],
   );
 }
