@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/constant/images_app.dart';
+import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
+import 'package:sacny/feat/auth/presentation/manager/gooole/google_state.dart';
 
 class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton({super.key, this.onTap});
@@ -10,41 +14,79 @@ class SocialLoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 50,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppColors.primaryGreen),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
-              blurRadius: 10,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(ImagesApp.LogoGoogle),
-              const Gap(10),
-              const Text(
-                "سجل الان بواسطه جوجل",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black , 
-                ),
+    return BlocConsumer<GoogleCubit, GoogleState>(
+      listener: (context, state) {
+        if(state is GoogleSuccess){ 
+          Fluttertoast.showToast(
+             msg: "تم تسجيل الدخول بنجاح" , 
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM, 
+             timeInSecForIosWeb: 1,
+             backgroundColor: Colors.green,
+             textColor: Colors.white, 
+             fontSize: 16
+          ); 
+
+          
+        }  
+
+        if(state is GoogleFailure){ 
+          Fluttertoast.showToast(
+             msg: "فشل تسجيل الدخول" , 
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM, 
+             timeInSecForIosWeb: 1,
+             backgroundColor: Colors.red,
+             textColor: Colors.white, 
+             fontSize: 16
+          );   
+        } 
+      },
+      builder: (context, state) {  
+
+        final cubit = GoogleCubit.get(context);  
+
+          if(state is GoogleLoading){ 
+            return Center(child: CircularProgressIndicator());  
+          } 
+
+        return GestureDetector(
+        onTap: onTap ?? () => cubit.signInWithGoogle(),
+        child: Container(
+          height: 50,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: AppColors.primaryGreen),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.04),
+                blurRadius: 10,
+                offset: const Offset(0, 3),
               ),
             ],
           ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(ImagesApp.LogoGoogle),
+                const Gap(10),
+                const Text(
+                  "سجل الان بواسطه جوجل",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black , 
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
+      );
+      }
     );
   }
 }

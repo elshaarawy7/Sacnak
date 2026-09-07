@@ -176,11 +176,7 @@ class _RegisterPageBodyState extends State<RegisterPageBody> {
 
                     SocialLoginButton(
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("إنشاء حساب عبر Google قيد الإعداد"),
-                          ),
-                        );
+                        registerCubit.signInWithGoogle();
                       },
                     ),
 

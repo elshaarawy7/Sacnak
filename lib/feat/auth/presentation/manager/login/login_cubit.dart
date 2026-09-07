@@ -16,14 +16,22 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of<LoginCubit>(context);
 
   Future<void> loginUser() async {
-    if (formKey.currentState!.validate()) {
-      emit(LoginLoading());
-    }
+    if (!formKey.currentState!.validate()) return;
+    emit(LoginLoading());
     final result = await authRepo.Login(
-      email: emailController.text,
+      email: emailController.text.trim(),
       password: passwordController.text,
     );
 
+    result.fold(
+      (failure) => emit(LoginFailure(failure.message)),
+      (user) => emit(LoginSuccess(user)),
+    );
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(LoginLoading());
+    final result = await authRepo.signInWithGoogle();
     result.fold(
       (failure) => emit(LoginFailure(failure.message)),
       (user) => emit(LoginSuccess(user)),

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/core/widgets/custom_batton.dart';
+import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_state.dart';
 import 'package:sacny/feat/auth/presentation/widgets/auth_batton.dart';
@@ -219,13 +220,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     const Gap(18),
                     SocialLoginButton(
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "تسجيل الدخول عبر Google قيد الإعداد",
-                            ),
-                          ),
-                        );
+                        GoogleCubit.get(context).signInWithGoogle();
                       },
                     ),
                     const Gap(16),

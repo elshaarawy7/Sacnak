@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/server/geti.dart';
+import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
 import 'package:sacny/feat/auth/presentation/widgets/login_page_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_cubit.dart';
@@ -14,8 +15,11 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getit<LoginCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getit<LoginCubit>()),
+        BlocProvider(create: (context) => getit<GoogleCubit>()),
+      ],
       child: Scaffold(
         backgroundColor: AppColors.lightBg,
         body: LoginPageBody(initialTab: initialTab),

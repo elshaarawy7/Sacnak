@@ -29,4 +29,13 @@ class RegesterCubit extends Cubit<RegesterState> {
       (user) => emit(RegesterSuccess(user)),
     );
   }
+
+  Future<void> signInWithGoogle() async {
+    emit(RegesterLoading());
+    final result = await authRepo.signInWithGoogle();
+    result.fold(
+      (failure) => emit(RegesterFailure(failure.message)),
+      (user) => emit(RegesterSuccess(user)),
+    );
+  }
 }

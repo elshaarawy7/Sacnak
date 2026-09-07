@@ -31,4 +31,9 @@ class AuthRepoImple implements AuthRepo {
       name: name,
     );
   }
+
+  @override
+  Future<Either<Fuiler, UserModel>> signInWithGoogle() {
+    return dataSourceAuth.signInWithGoogle();
+  }
 }
