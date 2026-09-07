@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105266687234",
+    "project_id": "sacnack-fef3a",
+    "storage_bucket": "sacnack-fef3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105266687234:android:95f2fed223abc6da12661b",
+        "android_client_info": {
+          "package_name": "com.example.sacny"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApD7Yz4_n2CO5_4ooDkyCDZYq1YByYajU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,6 +38,12 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^8.2.1
   dots_indicator: ^4.0.1
+  dartz: ^0.10.1
+  firebase_core: ^4.14.0
+  firebase_auth: ^6.6.1
+  flutter_bloc: ^9.1.1
+  get_it: ^9.2.1
+  fluttertoast: ^10.0.0
 
   
 

@@ -1,0 +1,20 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sacny/feat/auth/data/model/user_model.dart';
+
+abstract class LoginState {}
+
+class LoginInitial extends LoginState {}
+
+class LoginLoading extends LoginState {}
+
+class LoginSuccess extends LoginState {
+  final UserModel user;
+
+  LoginSuccess(this.user);
+}
+
+class LoginFailure extends LoginState {
+  final String errorMessage;
+
+  LoginFailure(this.errorMessage);
+}
