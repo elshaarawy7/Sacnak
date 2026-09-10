@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sacny/core/constant/colors_app.dart';
+import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/core/widgets/custom_batton.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_state.dart';
 import 'package:sacny/feat/auth/presentation/manager/regester/regester_cubit.dart';
@@ -44,8 +45,12 @@ class _RegisterPageBodyState extends State<RegisterPageBody> {
                   toastLength: Toast.LENGTH_SHORT,
                   textColor: Colors.white,
                   fontSize: 16.0,
-                );
-              }
+                ); 
+
+                context.push(AppRouter.ChooseAcountRoute) ; 
+              } 
+
+
               if (state is RegesterFailure) {
                 Fluttertoast.showToast(
                   msg: state.errorMessage,

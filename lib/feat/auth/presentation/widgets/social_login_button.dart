@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/constant/images_app.dart';
+import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/gooole/google_state.dart';
 
@@ -26,7 +28,7 @@ class SocialLoginButton extends StatelessWidget {
              textColor: Colors.white, 
              fontSize: 16
           ); 
-
+context.push(AppRouter.ChooseAcountRoute) ; 
           
         }  
 

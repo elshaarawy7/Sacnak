@@ -51,8 +51,12 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                   backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0,
-                );
-              } else if (state is LoginFailure) {
+                );  
+
+                context.push(AppRouter.ChooseAcountRoute) ; 
+
+              } 
+              else if (state is LoginFailure) {
                 Fluttertoast.showToast(
                   msg: state.errorMessage,
                   toastLength: Toast.LENGTH_SHORT,
