@@ -116,8 +116,7 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
                   size: 22,
                 ),
                 ontap: () {
-                  // Navigate to Home Admin / Main screen
-                  context.push(AppRouter.HomeAdminPageRote);
+                  context.push(AppRouter.AdminRoute);
                 },
               ),
               const Gap(14),
@@ -177,7 +176,9 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected ? AppColors.primaryGreen : const Color(0xFFE2E8F0),
+            color: isSelected
+                ? AppColors.primaryGreen
+                : const Color(0xFFE2E8F0),
             width: isSelected ? 2.0 : 1.2,
           ),
           boxShadow: [
@@ -213,11 +214,7 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
                     ),
                   ),
                   child: isSelected
-                      ? const Icon(
-                          Icons.check,
-                          size: 15,
-                          color: Colors.white,
-                        )
+                      ? const Icon(Icons.check, size: 15, color: Colors.white)
                       : null,
                 ),
                 const SizedBox(width: 14),
@@ -346,8 +343,5 @@ class _RolePill {
   final IconData icon;
   final String text;
 
-  const _RolePill({
-    required this.icon,
-    required this.text,
-  });
+  const _RolePill({required this.icon, required this.text});
 }
