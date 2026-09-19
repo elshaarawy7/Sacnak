@@ -1,6 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/home/presentation/pages/home_admain_page.dart';
+import 'package:sacny/feat/admin/home_admain/presentation/pages/home_admain_page.dart';
 import 'package:sacny/feat/admin/chats_admain/presentation/pages/admain_chats.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/pages/add_drag_page.dart';
 import 'package:sacny/feat/admin/profile_dmain/presentation/pages/profile_admain.dart';

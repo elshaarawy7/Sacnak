@@ -21,7 +21,6 @@ class SacnackApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -35,6 +34,10 @@ class SacnackApp extends StatelessWidget {
           ),
         ),
       ),
+
+      builder: (context, child) {
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
+      },
     );
   }
 }

@@ -18,9 +18,6 @@ migration:
     - platform: android
       create_revision: a63f90ac0d26049c6de1724e99817b3e7ff4b141
       base_revision: a63f90ac0d26049c6de1724e99817b3e7ff4b141
-    - platform: ios
-      create_revision: a63f90ac0d26049c6de1724e99817b3e7ff4b141
-      base_revision: a63f90ac0d26049c6de1724e99817b3e7ff4b141
 
   # User provided section
 
