@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/add_drug/presentation/widgets/text_filed.dart';
+import 'package:sacny/core/widgets/text_filed.dart';
 
 class PriceCartMonth extends StatefulWidget {
   const PriceCartMonth({
@@ -62,7 +62,7 @@ class _PriceCartMonthState extends State<PriceCartMonth> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 25),
           child: Column(
             children: [
-              CusteomFromTextFiledAdmain(
+              CusteomFromTextFiled(
                 controller: priceController,
                 labelText: "سعر الشهر",
                 hintText: "ادخل سعر الشهر",
@@ -79,7 +79,7 @@ class _PriceCartMonthState extends State<PriceCartMonth> {
 
               Gap(20),
 
-              CusteomFromTextFiledAdmain(
+              CusteomFromTextFiled(
                 controller: insuranceController,
                 labelText: "قيمه التامين المسترد ",
                 hintText: "ادخل قيمه التامين المسترد ",

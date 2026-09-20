@@ -9,6 +9,7 @@ import 'package:sacny/feat/admin/add_drug/data/repo/property_repository.dart';
 import 'package:sacny/feat/admin/add_drug/data/repo/property_repository_imple.dart';
 import 'package:sacny/feat/admin/add_drug/domain/usercase/add_property_usecase.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/cubit/propetry_cubit.dart';
+import 'package:sacny/feat/admin/profile_dmain/presentation/cubit/profile_admain_cubit.dart';
 import 'package:sacny/feat/auth/data/datasourse/datasourse_auth.dart';
 import 'package:sacny/feat/auth/data/datasourse/datasourse_authimple.dart';
 import 'package:sacny/feat/auth/data/repo/auth_repo.dart';
@@ -50,5 +51,7 @@ void getsetUp() {
   getit.registerFactory(() => PropertyCubit(
     addPropertyUseCase: getit(),
     repository: getit(),   
-  ));
+  )); 
+
+  getit.registerFactory(() => ProfileAdminCubit());
 } 

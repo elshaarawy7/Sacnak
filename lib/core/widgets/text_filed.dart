@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CusteomFromTextFiledAdmain extends StatelessWidget {
-  const CusteomFromTextFiledAdmain({
+class CusteomFromTextFiled extends StatelessWidget {
+  const CusteomFromTextFiled({
     super.key,
     required this.labelText,
     required this.hintText,
@@ -19,7 +19,7 @@ class CusteomFromTextFiledAdmain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextFormField( 
       controller: controller,
       validator: validator,
       keyboardType: keyboardType,

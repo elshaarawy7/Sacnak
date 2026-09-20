@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/add_drug/presentation/widgets/text_filed.dart';
+import 'package:sacny/core/widgets/text_filed.dart';
 
 class CartAdmin extends StatefulWidget {
   const CartAdmin({
@@ -60,7 +60,7 @@ class _CartAdminState extends State<CartAdmin> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 25),
           child: Column(
             children: [
-              CusteomFromTextFiledAdmain(
+              CusteomFromTextFiled(
                 controller: areaController,
                 labelText: "مساحه الشقه",
                 hintText: "ادخل مساحه الشقه",

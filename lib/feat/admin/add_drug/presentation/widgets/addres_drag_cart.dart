@@ -4,7 +4,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/pages/map_location_picker.dart';
-import 'package:sacny/feat/admin/add_drug/presentation/widgets/text_filed.dart';
+import 'package:sacny/core/widgets/text_filed.dart';
 
 class AddressDragCart extends StatefulWidget {
   const AddressDragCart({
@@ -144,7 +144,7 @@ class _AddressDragCartState extends State<AddressDragCart> {
 
             Gap(12),
 
-            CusteomFromTextFiledAdmain(
+            CusteomFromTextFiled(
               controller: nameCityController,
               labelText: '\u0627\u0633\u0645 \u0627\u0644\u0645\u062f\u064a\u0646\u0647',
               hintText: '\u0627\u062f\u062e\u0644 \u0627\u0633\u0645 \u0627\u0644\u0645\u062f\u064a\u0646\u0647',
@@ -152,7 +152,7 @@ class _AddressDragCartState extends State<AddressDragCart> {
 
             Gap(12),
 
-            CusteomFromTextFiledAdmain(
+            CusteomFromTextFiled(
               controller: nameStreetController,
               labelText: '\u0627\u0633\u0645 \u0627\u0644\u0634\u0627\u0631\u0639',
               hintText: '\u0627\u062f\u062e\u0644 \u0627\u0633\u0645 \u0627\u0644\u0634\u0627\u0631\u0639',
@@ -163,7 +163,7 @@ class _AddressDragCartState extends State<AddressDragCart> {
             Row(
               children: [
                 Expanded(
-                  child: CusteomFromTextFiledAdmain(
+                  child: CusteomFromTextFiled(
                     controller: buildingNumberController,
                     labelText: '\u0631\u0642\u0645 \u0627\u0644\u0639\u0645\u0627\u0631\u0647',
                     hintText: '\u0631\u0642\u0645 \u0627\u0644\u0639\u0645\u0627\u0631\u0647',
@@ -172,7 +172,7 @@ class _AddressDragCartState extends State<AddressDragCart> {
                 ),
                 Gap(12),
                 Expanded(
-                  child: CusteomFromTextFiledAdmain(
+                  child: CusteomFromTextFiled(
                     controller: apartmentNumberController,
                     labelText: '\u0631\u0642\u0645 \u0627\u0644\u0634\u0642\u0647',
                     hintText: '\u0631\u0642\u0645 \u0627\u0644\u0634\u0642\u0647',
