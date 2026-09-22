@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/pages/add_drag_page.dart';
 import 'package:sacny/feat/admin/chats_admain/presentation/pages/admain_chats.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/pages/home_admain_page.dart';
+import 'package:sacny/feat/admin/home_admain/domain/entity/entuty_cart_home_admin_model.dart';
+import 'package:sacny/feat/admin/home_admain/presentation/pages/home_detils_admain_page.dart';
 import 'package:sacny/feat/admin/profile_dmain/presentation/pages/profile_admain.dart';
 import 'package:sacny/feat/admin/rote_adman.dart';
 import 'package:sacny/feat/auth/presentation/pages/login_page.dart';
@@ -25,7 +27,8 @@ class AppRouter {
   static const String AddDragPageRote = '/AddDragPage';
   static const String AdminChatsPageRote = '/AdminChatsPage';
   static const String ProfileAdmainRote = '/ProfileAdmain';
-  static const String AdminRoute = '/RouteAdmin';
+  static const String AdminRoute = '/RouteAdmin'; 
+  static const String homeAdmainDetilsPgae = '/homeAdmainDetilsPgae' ;
 
   static final GoRouter router = GoRouter(
     initialLocation: splashRoute,
@@ -83,7 +86,15 @@ class AppRouter {
       GoRoute(
         path: AdminRoute,
         builder: (context, state) => const RouteAdmin(),
-      ),
+      ), 
+
+      GoRoute(
+        path: homeAdmainDetilsPgae,
+        builder: (context, state) {
+          final property = state.extra as EntutyCartHomeAdminModel;
+          return HomeDetilsAdmainPage(property: property);
+        },
+      )
     ],
   );
 }

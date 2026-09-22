@@ -72,6 +72,8 @@ class PropertyModel extends PropertyEntity {
       'insurance': insurance,
       'isIncludesBills': isIncludesBills,
       'status': status,
+      'occupiedBeds': 0,
+      'availableBeds': bedrooms,
       'images': images,
       'amenities': amenities,
     };

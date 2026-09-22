@@ -9,6 +9,11 @@ import 'package:sacny/feat/admin/add_drug/data/repo/property_repository.dart';
 import 'package:sacny/feat/admin/add_drug/data/repo/property_repository_imple.dart';
 import 'package:sacny/feat/admin/add_drug/domain/usercase/add_property_usecase.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/cubit/propetry_cubit.dart';
+import 'package:sacny/feat/admin/home_admain/data/datasourse/cart_home_admin_datasourse.dart';
+import 'package:sacny/feat/admin/home_admain/data/datasourse/cart_home_admin_datasourse_imple.dart';
+import 'package:sacny/feat/admin/home_admain/data/repo/cart_home_admin_repo.dart';
+import 'package:sacny/feat/admin/home_admain/data/repo/cart_home_admin_repo_imple.dart';
+import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_cubit.dart';
 import 'package:sacny/feat/admin/profile_dmain/presentation/cubit/profile_admain_cubit.dart';
 import 'package:sacny/feat/auth/data/datasourse/datasourse_auth.dart';
 import 'package:sacny/feat/auth/data/datasourse/datasourse_authimple.dart';
@@ -53,5 +58,10 @@ void getsetUp() {
     repository: getit(),   
   )); 
 
-  getit.registerFactory(() => ProfileAdminCubit());
+  getit.registerFactory(() => ProfileAdminCubit()); 
+  getit.registerLazySingleton<CartHomeAdminDataSource>(() => CartHomeAdminDataSourceImple());
+  getit.registerLazySingleton<CartHomeAdminRepo>(() => CartHomeAdminRepoImple(cartHomeAdminDataSource: getit()));
+  getit.registerLazySingleton<CartHomeAdminRepoImple>(() => CartHomeAdminRepoImple(cartHomeAdminDataSource: getit()));
+  getit.registerLazySingleton<CartHomeAdminCubit>(() => CartHomeAdminCubit(cartHomeAdminRepoImple: getit())); 
+  
 } 
