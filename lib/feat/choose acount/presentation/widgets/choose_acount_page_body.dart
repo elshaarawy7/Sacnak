@@ -116,7 +116,13 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
                   size: 22,
                 ),
                 ontap: () {
-                  context.push(AppRouter.AdminRoute);
+                  if(_selectedRoleIndex ==0){ 
+                       context.push(AppRouter.AdminRoute);
+                  } 
+
+                  else if (_selectedRoleIndex == 1 ){
+                    context.push(AppRouter.clientRote) ;
+                  }
                 },
               ),
               const Gap(14),

@@ -6,21 +6,28 @@ import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/feat/admin/home_admain/domain/entity/entuty_cart_home_admin_model.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_cubit.dart';
 
-class AdminApartmentCard extends StatelessWidget {
+class HomeApartmentCard extends StatefulWidget {
   final EntutyCartHomeAdminModel property;
-  const AdminApartmentCard({super.key, required this.property});
+  const HomeApartmentCard({super.key, required this.property}); 
 
+  @override
+  State<HomeApartmentCard> createState() => _HomeApartmentCardState();
+}
 
+class _HomeApartmentCardState extends State<HomeApartmentCard> { 
+  int _selectedRoleIndex = 0; 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.push(AppRouter.homeAdmainDetilsPgae, extra: property).then((_) {
-          if (context.mounted) {
-            context.read<CartHomeAdminCubit>().getProperties();
-          }
-        });
-      },
+      onTap: () { 
+         
+         if(_selectedRoleIndex == 1){  
+           context.push(AppRouter.homeAdmainDetilsPgae, extra: widget.property);
+         } else {
+           context.push(AppRouter.clientHomeDetils, extra: widget.property);
+         }
+        
+} , 
       child: Card(
         clipBehavior: Clip.antiAlias,
         elevation: 1,
@@ -30,7 +37,7 @@ class AdminApartmentCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _ApartmentImage(imageUrl: property.imageUrl),
+            _ApartmentImage(imageUrl: widget.property.imageUrl),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
               child: Column(
@@ -41,7 +48,7 @@ class AdminApartmentCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          property.title, 
+                          widget.property.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
@@ -52,7 +59,7 @@ class AdminApartmentCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      _AvailabilityBadge(isAvailable: property.isAvailable),
+                      _AvailabilityBadge(isAvailable: widget.property.isAvailable),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -65,7 +72,7 @@ class AdminApartmentCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 7),
                       Text(
-                        '${property.availableBeds} سرير',
+                        '${widget.property.availableBeds} سرير',
                         style: TextStyle(
                           color: AppColors.darkText.withValues(alpha: 0.68),
                           fontSize: 14,
@@ -74,7 +81,7 @@ class AdminApartmentCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '${property.price} ر.س',
+                        '${widget.property.price} ر.س',
                         textDirection: TextDirection.rtl,
                         style: const TextStyle(
                           color: AppColors.primaryGreen,
@@ -97,7 +104,6 @@ class AdminApartmentCard extends StatelessWidget {
 class _ApartmentImage extends StatelessWidget {
   final String imageUrl;
   const _ApartmentImage({required this.imageUrl});
-
 
   @override
   Widget build(BuildContext context) {

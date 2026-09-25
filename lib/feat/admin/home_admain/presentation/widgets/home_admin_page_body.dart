@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/home_admain/presentation/widgets/admin_apartment_card.dart';
+import 'package:sacny/core/widgets/admin_apartment_card.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_cubit.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_state.dart';
 
@@ -90,7 +90,7 @@ class HomeAdminPageBody extends StatelessWidget {
                   itemCount: properties.length,
                   itemBuilder: (context, index) {
                     final property = properties[index];
-                    return AdminApartmentCard(property: property);
+                    return HomeApartmentCard(property: property);
                   },
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 16),

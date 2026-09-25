@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/main.dart';
 
 void main() {
@@ -14,5 +15,9 @@ void main() {
     await tester.pump(const Duration(seconds: 2));
     await tester.pump();
     expect(find.byType(SacnackApp), findsOneWidget);
+  });
+
+  test('client route path matches router registration', () {
+    expect(AppRouter.clientRote, '/RoteClient');
   });
 }

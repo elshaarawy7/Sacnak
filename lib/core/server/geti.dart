@@ -23,6 +23,12 @@ import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/regester/regester_cubit.dart';
 
+import 'package:sacny/feat/client/home_client/data/datasource/client_property_details_remote_datasource.dart';
+import 'package:sacny/feat/client/home_client/data/repo/client_property_details_repo_impl.dart';
+import 'package:sacny/feat/client/home_client/domain/repo/client_property_details_repo.dart';
+import 'package:sacny/feat/client/home_client/domain/usecase/get_client_property_details_usecase.dart';
+import 'package:sacny/feat/client/home_client/presentation/cubit/client_property_details_cubit.dart';
+
 final getit = GetIt.instance;  
 
 void getsetUp() { 
@@ -63,5 +69,19 @@ void getsetUp() {
   getit.registerLazySingleton<CartHomeAdminRepo>(() => CartHomeAdminRepoImple(cartHomeAdminDataSource: getit()));
   getit.registerLazySingleton<CartHomeAdminRepoImple>(() => CartHomeAdminRepoImple(cartHomeAdminDataSource: getit()));
   getit.registerLazySingleton<CartHomeAdminCubit>(() => CartHomeAdminCubit(cartHomeAdminRepoImple: getit())); 
-  
+
+  // Client Property Details
+  getit.registerLazySingleton<ClientPropertyDetailsRemoteDataSource>(
+    () => ClientPropertyDetailsRemoteDataSourceImpl(firestore: getit()),
+  );
+  getit.registerLazySingleton<ClientPropertyDetailsRepo>(
+    () => ClientPropertyDetailsRepoImpl(remoteDataSource: getit()),
+  );
+  getit.registerLazySingleton<GetClientPropertyDetailsUseCase>(
+    () => GetClientPropertyDetailsUseCase(repository: getit()),
+  );
+  getit.registerFactory<ClientPropertyDetailsCubit>(
+    () => ClientPropertyDetailsCubit(getClientPropertyDetailsUseCase: getit()),
+  );
 } 
+
