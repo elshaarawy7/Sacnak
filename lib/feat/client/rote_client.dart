@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/chats_admain/presentation/pages/admain_chats.dart';
 import 'package:sacny/feat/client/chats_client/presentation/pages/chate_page_client.dart';
 import 'package:sacny/feat/client/home_client/presentation/pages/home_page_client.dart';
 import 'package:sacny/feat/client/profile_client/presentation/pages/profile_page_client.dart';
 
 class RoteClient extends StatefulWidget {
-  const RoteClient ({super.key});
+  const RoteClient({super.key});
 
   static const String routeName = '/RoteClient';
 
   @override
-  State<RoteClient > createState() => _RouteAdminState();
+  State<RoteClient> createState() => _RouteAdminState();
 }
 
 class _RouteAdminState extends State<RoteClient> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = const [
-    HomePageClient() , 
-    ProfilePageClient() ,  
-    ChatePageClient() ,
-          
-
+    HomePageClient(),
+    ProfilePageClient(),
+    ChatePageClient(),
   ];
 
   void _onTabTapped(int index) {
@@ -35,10 +32,7 @@ class _RouteAdminState extends State<RoteClient> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightBg,
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: _buildBottomNavBar(),
     );
   }
@@ -50,7 +44,7 @@ class _RouteAdminState extends State<RoteClient> {
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.white,
       selectedItemColor: AppColors.primaryGreen,
-      unselectedItemColor: AppColors.darkText.withOpacity(0.45),
+      unselectedItemColor: AppColors.darkText.withValues(alpha: 0.45),
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 12,
@@ -67,15 +61,14 @@ class _RouteAdminState extends State<RoteClient> {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat_bubble_outline_rounded),
-          activeIcon: Icon(Icons.chat_bubble_rounded),
-          label: 'Chats',
-        ),
-        
-        BottomNavigationBarItem(
           icon: Icon(Icons.person_outline_rounded),
           activeIcon: Icon(Icons.person_rounded),
           label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat_bubble_outline_rounded),
+          activeIcon: Icon(Icons.chat_bubble_rounded),
+          label: 'Chats',
         ),
       ],
     );

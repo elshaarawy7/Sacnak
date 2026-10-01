@@ -150,15 +150,11 @@ class _NearbyUniversitiesSelectorState
                               elevation: 4,
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.white,
-                              child: Container(
-                                width: 280,
-                                constraints:
-                                    const BoxConstraints(maxHeight: 200),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border:
-                                      Border.all(color: Colors.grey.shade200),
+                              clipBehavior: Clip.antiAlias,
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxHeight: 200,
+                                  maxWidth: 280,
                                 ),
                                 child: ListView.separated(
                                   padding: EdgeInsets.zero,
@@ -166,8 +162,7 @@ class _NearbyUniversitiesSelectorState
                                   itemCount: options.length,
                                   separatorBuilder: (context, index) =>
                                       const Divider(height: 1),
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
+                                  itemBuilder: (BuildContext context, int index) {
                                     final String option =
                                         options.elementAt(index);
                                     return ListTile(

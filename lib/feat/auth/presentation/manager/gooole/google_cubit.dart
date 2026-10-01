@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sacny/feat/auth/data/repo/auth_repo.dart';
 import 'package:sacny/feat/auth/presentation/manager/gooole/google_state.dart';
@@ -5,7 +6,7 @@ import 'package:sacny/feat/auth/presentation/manager/gooole/google_state.dart';
 class GoogleCubit extends Cubit<GoogleState> {
   final AuthRepo authRepo;
 
-  static GoogleCubit get(context) => BlocProvider.of(context);
+  static GoogleCubit get(BuildContext context) => BlocProvider.of(context);
 
   GoogleCubit(this.authRepo) : super(GoogleInitial());
 

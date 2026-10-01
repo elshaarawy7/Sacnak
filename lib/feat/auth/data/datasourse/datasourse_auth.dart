@@ -3,11 +3,11 @@ import 'package:sacny/core/error/fuiler.dart';
 import 'package:sacny/feat/auth/data/model/user_model.dart';
 
 abstract class DataSourceAuth {
-  Future<Either<Fuiler, UserModel>> Login({
+  Future<Either<Fuiler, UserModel>> login({
     required String email,
     required String password,
   });
-  Future<Either<Fuiler, UserModel>> Register({
+  Future<Either<Fuiler, UserModel>> register({
     required String email,
     required String password,
     required String phone,

@@ -1,11 +1,11 @@
-class AdminProfileEntity {
-  final String name;
-  final String phone;
-  final String? image;
+class ProfileAdminEntity {
+  final String adminName;
+  final String adminPhone;
+  final String? adminImage;
 
-  AdminProfileEntity({
-    required this.name,
-    required this.phone,
-    this.image,
+  ProfileAdminEntity({
+    required this.adminName,
+    required this.adminPhone,
+    this.adminImage,
   });
 }

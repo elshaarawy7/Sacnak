@@ -117,7 +117,7 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
                 ),
                 ontap: () {
                   if(_selectedRoleIndex ==0){ 
-                       context.push(AppRouter.AdminRoute);
+                       context.push(AppRouter.adminRoute);
                   } 
 
                   else if (_selectedRoleIndex == 1 ){
@@ -190,8 +190,8 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
           boxShadow: [
             BoxShadow(
               color: isSelected
-                  ? AppColors.primaryGreen.withOpacity(0.08)
-                  : Colors.black.withOpacity(0.02),
+                  ? AppColors.primaryGreen.withValues(alpha: 0.08)
+                  : Colors.black.withValues(alpha: 0.02),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -301,12 +301,12 @@ class _ChooseAcountPageBodyState extends State<ChooseAcountPageBody> {
                     ),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? AppColors.primaryGreen.withOpacity(0.06)
+                          ? AppColors.primaryGreen.withValues(alpha: 0.06)
                           : const Color(0xFFF8FAFC),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: isSelected
-                            ? AppColors.primaryGreen.withOpacity(0.25)
+                            ? AppColors.primaryGreen.withValues(alpha: 0.25)
                             : const Color(0xFFE2E8F0),
                         width: 1,
                       ),

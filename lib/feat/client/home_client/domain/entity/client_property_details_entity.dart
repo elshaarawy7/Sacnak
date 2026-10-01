@@ -17,6 +17,10 @@ class ClientPropertyDetailsEntity {
   final double? insurance;
   final bool isIncludesBills;
   final String status;
+  final String? ownerName;
+  final String? ownerPhone;
+  final String? ownerImage;
+  final String? ownerId;
 
   ClientPropertyDetailsEntity({
     required this.id,
@@ -37,5 +41,9 @@ class ClientPropertyDetailsEntity {
     this.insurance,
     required this.isIncludesBills,
     required this.status,
+    this.ownerName,
+    this.ownerPhone,
+    this.ownerImage,
+    this.ownerId,
   });
 }

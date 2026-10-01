@@ -15,7 +15,7 @@ class OnboardingImageCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         image: DecorationImage(
-          image: AssetImage(ImagesApp.SplashImage),
+          image: AssetImage(ImagesApp.splashImage),
           fit: BoxFit.fill,
         ),
       ),

@@ -9,7 +9,11 @@ class CartHomeAdminRepoImple extends CartHomeAdminRepo {
 
   CartHomeAdminRepoImple({required this.cartHomeAdminDataSource});
   @override
-  Future<Either<Fuiler, List<EntutyCartHomeAdminModel>>> getProperties() async {
-    return await cartHomeAdminDataSource.getProperties();
-  } 
+  Future<Either<Fuiler, List<EntutyCartHomeAdminModel>>> getProperties({
+    bool onlyOwnerProperties = false,
+  }) async {
+    return await cartHomeAdminDataSource.getProperties(
+      onlyOwnerProperties: onlyOwnerProperties,
+    );
+  }
 } 

@@ -7,6 +7,7 @@ import 'package:sacny/feat/client/home_client/presentation/cubit/client_property
 import 'package:sacny/feat/client/home_client/presentation/widgets/client_amenities_section.dart';
 import 'package:sacny/feat/client/home_client/presentation/widgets/client_details_image_header.dart';
 import 'package:sacny/feat/client/home_client/presentation/widgets/client_nearby_universities_section.dart';
+import 'package:sacny/feat/client/home_client/presentation/widgets/client_owner_section.dart';
 import 'package:sacny/feat/client/home_client/presentation/widgets/client_property_info_section.dart';
 
 class HomePageClientDetilsBody extends StatelessWidget {
@@ -95,12 +96,28 @@ class HomePageClientDetilsBody extends StatelessWidget {
                     images: property.images,
                     isAvailable: property.status =="available",
                   ),
-                ),
+                ), 
+
+                
+                
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
                       ClientPropertyInfoSection(property: property),
+                      const Gap(16),
+                      ClientOwnerSection(
+                        ownerName: property.ownerName,
+                        ownerPhone: property.ownerPhone,
+                        ownerImage: property.ownerImage,
+                        ownerId: property.ownerId,
+                        propertyId: property.id,
+                        propertyTitle: 'عقار للإيجار',
+                        propertyAddress: [property.city, property.street]
+                            .where((part) => part.trim().isNotEmpty)
+                            .join('، '),
+                        propertyPrice: property.price,
+                      ),
                       const Gap(16),
                       ClientNearbyUniversitiesSection(
                         universities: property.nearbyUniversities,

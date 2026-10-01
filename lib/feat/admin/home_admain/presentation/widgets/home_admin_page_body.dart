@@ -90,7 +90,7 @@ class HomeAdminPageBody extends StatelessWidget {
                   itemCount: properties.length,
                   itemBuilder: (context, index) {
                     final property = properties[index];
-                    return HomeApartmentCard(property: property);
+                    return HomeApartmentCard(property: property, isAdmin: true);
                   },
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 16),

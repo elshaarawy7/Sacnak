@@ -8,11 +8,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sacny/core/error/fuiler.dart';
 import 'package:sacny/feat/admin/profile_dmain/data/datasource/data_sourcse_profile_admain.dart';
 
-class ProfileAdmainDataSourceImple extends ProfileAdmainDataSource {
+class ProfileAdminDataSourceImple extends ProfileAdminDataSource {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  // دالة مساعدة لرفع صورة البروفايل إلى Cloudinary
+
   Future<String> _uploadProfileImage(String imagePath) async {
     const cloudName = 'dghtbue90';
     const uploadPreset = 'sacny_preset';

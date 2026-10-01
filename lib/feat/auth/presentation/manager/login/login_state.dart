@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sacny/feat/auth/data/model/user_model.dart';
 
 abstract class LoginState {}

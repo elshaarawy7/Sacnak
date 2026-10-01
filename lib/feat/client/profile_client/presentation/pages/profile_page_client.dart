@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sacny/core/constant/colors_app.dart';
+import 'package:sacny/core/server/geti.dart';
+import 'package:sacny/feat/client/profile_client/presentation/cubit/profile_admain_cubit.dart';
 import 'package:sacny/feat/client/profile_client/presentation/widgets/profile_page_client_imple.dart';
 
 class ProfilePageClient extends StatelessWidget {
@@ -11,7 +14,10 @@ class ProfilePageClient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white , 
-      body: ProfilePageClientBody(),
+      body: BlocProvider(
+        create: (context) => getit<ProfileClientCubit>(),
+        child: ProfilePageClientBody(),
+      ),
     );
   }
 }

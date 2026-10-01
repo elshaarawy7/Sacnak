@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:sacny/core/error/fuiler.dart';
 
-abstract class ProfileAdmainDataSource {
+abstract class ProfileAdminDataSource {
 
   Future<Either<Fuiler, String>> updateProfile(
-    String name,
-    String phone,
-    String? imagePath,
+    String adminName,
+    String adminPhone,
+    String? adminImage,
   );
 }

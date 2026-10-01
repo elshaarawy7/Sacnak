@@ -28,7 +28,7 @@ class AuthHeaderLogo extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Image.asset(
-                ImagesApp.LogoApp,
+                ImagesApp.logoApp,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) => const Icon(
                   Icons.home_work_rounded,

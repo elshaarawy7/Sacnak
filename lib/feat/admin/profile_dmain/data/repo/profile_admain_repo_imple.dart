@@ -3,15 +3,18 @@ import 'package:sacny/core/error/fuiler.dart';
 import 'package:sacny/feat/admin/profile_dmain/data/datasource/data_sourcse_profile_admain.dart';
 import 'package:sacny/feat/admin/profile_dmain/data/repo/profile_admain_repo.dart';
 
-class ProfileAdmainRepoImple implements ProfileAdmainRepo {
-  final ProfileAdmainDataSource profileAdmainDataSource;
+class ProfileAdminRepoImple implements ProfileAdminRepo {
+  final ProfileAdminDataSource profileAdminDataSource;
 
-  ProfileAdmainRepoImple({required this.profileAdmainDataSource});
+  ProfileAdminRepoImple({required this.profileAdminDataSource});
 
   @override
-  Future<Either<Fuiler, String>> updateProfile(String name, String phone, String? imagePath) {
-    return profileAdmainDataSource.updateProfile(name, phone, imagePath); 
-    
+  Future<Either<Fuiler, String>> updateProfile(
+    String adminName,
+    String adminPhone,
+    String? adminImage,
+  ) {
+    return profileAdminDataSource.updateProfile(adminName, adminPhone, adminImage);
   }
 
  

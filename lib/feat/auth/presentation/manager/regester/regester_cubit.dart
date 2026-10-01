@@ -6,7 +6,7 @@ import 'package:sacny/feat/auth/presentation/manager/regester/regester_state.dar
 class RegesterCubit extends Cubit<RegesterState> {
   RegesterCubit(this.authRepo) : super(RegesterInitial());
   final AuthRepo authRepo;
-  static RegesterCubit get(context) => BlocProvider.of<RegesterCubit>(context);
+  static RegesterCubit get(BuildContext context) => BlocProvider.of<RegesterCubit>(context);
   final formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
@@ -17,7 +17,7 @@ class RegesterCubit extends Cubit<RegesterState> {
     if (!formKey.currentState!.validate()) return;
 
     emit(RegesterLoading());
-    final result = await authRepo.Register(
+    final result = await authRepo.register(
       email: emailController.text.trim(),
       password: passwordController.text,
       phone: phoneController.text.trim(),

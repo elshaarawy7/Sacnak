@@ -11,7 +11,7 @@ class DatasourseAuthImple implements DataSourceAuth {
   final FirebaseAuthServices _authServices;
 
   @override
-  Future<Either<Fuiler, UserModel>> Login({
+  Future<Either<Fuiler, UserModel>> login({
     required String email,
     required String password,
   }) async {
@@ -35,7 +35,7 @@ class DatasourseAuthImple implements DataSourceAuth {
   }
 
   @override
-  Future<Either<Fuiler, UserModel>> Register({
+  Future<Either<Fuiler, UserModel>> register({
     required String email,
     required String password,
     required String phone,

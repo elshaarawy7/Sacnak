@@ -20,6 +20,10 @@ class ClientPropertyDetailsModel extends ClientPropertyDetailsEntity {
     super.insurance,
     required super.isIncludesBills,
     required super.status,
+    super.ownerName,
+    super.ownerPhone,
+    super.ownerImage,
+    super.ownerId,
   });
 
   factory ClientPropertyDetailsModel.fromJson(Map<String, dynamic> json, {String id = ''}) {
@@ -64,6 +68,10 @@ class ClientPropertyDetailsModel extends ClientPropertyDetailsEntity {
       insurance: (json['insurance'] as num?)?.toDouble(),
       isIncludesBills: json['isIncludesBills'] ?? false,
       status: json['status']?.toString() ?? 'available',
+      ownerName: json['ownerName']?.toString() ?? json['adminName']?.toString(),
+      ownerPhone: json['ownerPhone']?.toString() ?? json['adminPhone']?.toString(),
+      ownerImage: json['ownerImage']?.toString() ?? json['adminImage']?.toString(),
+      ownerId: json['ownerId']?.toString() ?? json['adminId']?.toString() ?? json['userId']?.toString(),
     );
   }
 }

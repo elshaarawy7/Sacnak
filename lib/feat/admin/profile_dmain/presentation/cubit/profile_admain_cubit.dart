@@ -8,10 +8,10 @@ import 'package:sacny/feat/admin/profile_dmain/presentation/cubit/profile_admain
 class ProfileAdminCubit extends Cubit<ProfileAdminState> {
   ProfileAdminCubit() : super(ProfileAdminInitial());
 
-  static ProfileAdminCubit get(context) => BlocProvider.of(context); 
+  static ProfileAdminCubit get(BuildContext context) => BlocProvider.of(context); 
 
-  final ProfileAdmainRepoImple profileAdmainRepoImple = ProfileAdmainRepoImple(
-    profileAdmainDataSource: ProfileAdmainDataSourceImple(),
+  final ProfileAdminRepoImple profileAdminRepoImple = ProfileAdminRepoImple(
+    profileAdminDataSource: ProfileAdminDataSourceImple(),
   );
 
   final ImagePicker imagePicker = ImagePicker();
@@ -41,7 +41,7 @@ class ProfileAdminCubit extends Cubit<ProfileAdminState> {
     if (formKey.currentState?.validate() ?? false) {
       emit(ProfileAdminLoading());
       try {
-        final result = await profileAdmainRepoImple.updateProfile(
+        final result = await profileAdminRepoImple.updateProfile(
           nameController.text.trim(),
           phoneController.text.trim(),
           selectedImage?.path,

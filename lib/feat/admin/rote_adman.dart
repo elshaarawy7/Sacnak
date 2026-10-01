@@ -1,8 +1,8 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:sacny/core/constant/colors_app.dart';
-import 'package:sacny/feat/admin/home_admain/presentation/pages/home_admain_page.dart';
-import 'package:sacny/feat/admin/chats_admain/presentation/pages/admain_chats.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/pages/add_drag_page.dart';
+import 'package:sacny/feat/admin/chats_admain/presentation/pages/admain_chats.dart';
+import 'package:sacny/feat/admin/home_admain/presentation/pages/home_admain_page.dart';
 import 'package:sacny/feat/admin/profile_dmain/presentation/pages/profile_admain.dart';
 
 class RouteAdmin extends StatefulWidget {
@@ -19,11 +19,11 @@ class _RouteAdminState extends State<RouteAdmin> {
 
   /// قائمة الصفحات المُضافة في IndexedStack
   /// IndexedStack يحافظ على حالة (State) كل صفحة عند التنقل بينها
-  final List<Widget> _pages = const [
-    HomeAdmainPage(),   // index 0 - Home
-    AdminChatsPage(),   // index 1 - Chats
-    AddDragPage(),      // index 2 - Add Drug
-    ProfileAdmain(),    // index 3 - Profile
+  final List<Widget> _pages = [
+    const HomeAdmainPage(),
+    const AdminChatsPage(),
+    const AddDragPage(),
+    const ProfileAdmain(),
   ];
 
   void _onTabTapped(int index) {
@@ -51,7 +51,7 @@ class _RouteAdminState extends State<RouteAdmin> {
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.white,
       selectedItemColor: AppColors.primaryGreen,
-      unselectedItemColor: AppColors.darkText.withOpacity(0.45),
+      unselectedItemColor: AppColors.darkText.withValues(alpha: 0.45),
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 12,

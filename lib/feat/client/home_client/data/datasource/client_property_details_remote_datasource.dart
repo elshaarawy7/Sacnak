@@ -20,7 +20,31 @@ class ClientPropertyDetailsRemoteDataSourceImpl implements ClientPropertyDetails
       if (!doc.exists || doc.data() == null) {
         return Left(ServerFuiler("لم يتم العثور على بيانات هذا العقار"));
       }
-      return Right(ClientPropertyDetailsModel.fromJson(doc.data()!, id: doc.id));
+      
+      final data = Map<String, dynamic>.from(doc.data()!);
+      String? ownerName = data['ownerName'] ?? data['adminName'] ?? data['name'];
+      String? ownerPhone = data['ownerPhone'] ?? data['adminPhone'] ?? data['phone'];
+      String? ownerImage = data['ownerImage'] ?? data['adminImage'] ?? data['image'];
+      String? adminId = data['adminId'] ?? data['ownerId'] ?? data['userId'];
+
+      if (adminId != null && adminId.toString().isNotEmpty) {
+        try {
+          final adminDoc = await firestore.collection('admin_suers').doc(adminId.toString()).get();
+          if (adminDoc.exists && adminDoc.data() != null) {
+            final adminData = adminDoc.data()!;
+            ownerName = adminData['name']?.toString() ?? ownerName;
+            ownerPhone = adminData['phone']?.toString() ?? ownerPhone;
+            ownerImage = adminData['image']?.toString() ?? ownerImage;
+          }
+        } catch (_) {}
+      }
+
+      data['ownerName'] = ownerName ?? 'مالك العقار';
+      data['ownerPhone'] = ownerPhone ?? '';
+      data['ownerImage'] = ownerImage ?? '';
+      data['ownerId'] = adminId ?? '';
+
+      return Right(ClientPropertyDetailsModel.fromJson(data, id: doc.id));
     } catch (e) {
       return Left(ServerFuiler(e.toString().replaceAll("Exception: ", "")));
     }

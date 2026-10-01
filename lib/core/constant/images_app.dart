@@ -1,7 +1,5 @@
-class ImagesApp{
- static final String LogoApp = 'assets/images/logo_app.png'; 
- static final String SplashImage = 'assets/images/onbourding.jpg';
- static final String LogoGoogle = 'assets/images/logo_google.png';
- 
-  
+class ImagesApp {
+  static const String logoApp = 'assets/images/logo_app.png'; 
+  static const String splashImage = 'assets/images/onbourding.jpg';
+  static const String logoGoogle = 'assets/images/logo_google.png';
 }

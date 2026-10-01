@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/feat/admin/home_admain/domain/entity/entuty_cart_home_admin_model.dart';
-import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_cubit.dart';
 
 class HomeApartmentCard extends StatefulWidget {
   final EntutyCartHomeAdminModel property;
-  const HomeApartmentCard({super.key, required this.property}); 
+  final bool isAdmin;
+
+  const HomeApartmentCard({
+    super.key,
+    required this.property,
+    required this.isAdmin,
+  });
 
   @override
   State<HomeApartmentCard> createState() => _HomeApartmentCardState();
 }
 
 class _HomeApartmentCardState extends State<HomeApartmentCard> { 
-  int _selectedRoleIndex = 0; 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () { 
-         
-         if(_selectedRoleIndex == 1){  
+         if (widget.isAdmin) {
            context.push(AppRouter.homeAdmainDetilsPgae, extra: widget.property);
          } else {
            context.push(AppRouter.clientHomeDetils, extra: widget.property);

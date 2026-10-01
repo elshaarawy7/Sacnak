@@ -8,6 +8,8 @@ import 'package:sacny/feat/admin/profile_dmain/presentation/pages/profile_admain
 import 'package:sacny/feat/admin/rote_adman.dart';
 import 'package:sacny/feat/auth/presentation/pages/login_page.dart';
 import 'package:sacny/feat/auth/presentation/pages/register_page.dart';
+import 'package:sacny/feat/chat/data/chat_models.dart';
+import 'package:sacny/feat/chat/presentation/pages/chat_page.dart';
 import 'package:sacny/feat/choose%20acount/presentation/pages/choose_acount_page.dart';
 import 'package:sacny/feat/client/home_client/presentation/pages/home_page_client.dart';
 import 'package:sacny/feat/client/home_client/presentation/pages/home_page_detils_client.dart';
@@ -21,28 +23,28 @@ class AppRouter {
   static const String splashRoute = '/';
   static const String onBordingRoute = '/onBordingPage';
   static const String onBordingPageTow = '/onBordingPageTow';
-  static const String LoginPageRote = '/LoginPage';
+  static const String loginPageRoute = '/LoginPage';
   static const String registerRoute = '/registerPage';
-  static const String ChooseAcountRoute = '/ChooseAcountPage';
+  static const String chooseAccountRoute = '/ChooseAcountPage';
 
   // admain
-  static const String HomeAdminPageRote = '/HomeAdminPage';
-  static const String AddDragPageRote = '/AddDragPage';
-  static const String AdminChatsPageRote = '/AdminChatsPage';
-  static const String ProfileAdmainRote = '/ProfileAdmain';
+  static const String homeAdminPageRoute = '/HomeAdminPage';
+  static const String addDragPageRoute = '/AddDragPage';
+  static const String adminChatsPageRoute = '/AdminChatsPage';
+  static const String profileAdminRoute = '/ProfileAdmain';
   static const String adminRoute = '/RouteAdmin';
   static const String clientRoute = '/RoteClient';
   static const String homeAdmainDetilsPgae = '/homeAdmainDetilsPgae';
 
-  // Backward-compatible aliases for existing code references.
-  static const String AdminRoute = adminRoute;
   static const String clientRote = clientRoute; 
 
   // client  
 
   static const String homePageClient = "/homePageCient" ; 
 
-  static const String clientHomeDetils = "/clientHomeDetils" ; 
+  static const String clientHomeDetils = "/clientHomeDetils" ;  
+
+  static const String chatPageRoute = "/ChatPage" ; 
 
 
   static final GoRouter router = GoRouter(
@@ -64,7 +66,7 @@ class AppRouter {
       ),
 
       GoRoute(
-        path: LoginPageRote,
+        path: loginPageRoute,
         builder: (context, state) => const LoginPage(),
       ),
 
@@ -74,27 +76,27 @@ class AppRouter {
       ),
 
       GoRoute(
-        path: ChooseAcountRoute,
+        path: chooseAccountRoute,
         builder: (context, state) => const ChooseAcountPage(),
       ),
 
       GoRoute(
-        path: HomeAdminPageRote,
+        path: homeAdminPageRoute,
         builder: (context, state) => const HomeAdmainPage(),
       ),
 
       GoRoute(
-        path: AddDragPageRote,
+        path: addDragPageRoute,
         builder: (context, state) => const AddDragPage(),
       ),
 
       GoRoute(
-        path: AdminChatsPageRote,
+        path: adminChatsPageRoute,
         builder: (context, state) => const AdminChatsPage(),
       ),
 
       GoRoute(
-        path: ProfileAdmainRote,
+        path: profileAdminRoute,
         builder: (context, state) => const ProfileAdmain(),
       ),
 
@@ -131,11 +133,13 @@ class AppRouter {
             return HomePageDetilsClient(propertyId: propertyId);
           },
         ),  
-
         
-
-         
-
+        GoRoute(
+          path: chatPageRoute, 
+          builder: (context, state) => ChatPage(
+            conversation: state.extra! as ChatConversation,
+          ),
+        ) , 
     ],
   );
 }

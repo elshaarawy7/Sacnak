@@ -22,16 +22,14 @@ class LogoWidgets extends StatelessWidget {
                   ],
                 ),
                 child: Center(
-                  child: Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Image.asset(
-                        ImagesApp
-                            .LogoApp, // استبدل 'logo.png' بمسار الصورة الفعلي لشعار التطبيق ,
-                        width: 110,
-                        height: 110,
-                        fit: BoxFit.contain,
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Image.asset(
+                      ImagesApp
+                          .logoApp, // استبدل 'logo.png' بمسار الصورة الفعلي لشعار التطبيق ,
+                      width: 110,
+                      height: 110,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

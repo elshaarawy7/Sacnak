@@ -13,12 +13,12 @@ class LoginCubit extends Cubit<LoginState> {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
 
-  static LoginCubit get(context) => BlocProvider.of<LoginCubit>(context);
+  static LoginCubit get(BuildContext context) => BlocProvider.of<LoginCubit>(context);
 
   Future<void> loginUser() async {
     if (!formKey.currentState!.validate()) return;
     emit(LoginLoading());
-    final result = await authRepo.Login(
+    final result = await authRepo.login(
       email: emailController.text.trim(),
       password: passwordController.text,
     );

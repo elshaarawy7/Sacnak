@@ -10,21 +10,21 @@ class AuthRepoImple implements AuthRepo {
   AuthRepoImple({required this.dataSourceAuth});
 
   @override
-  Future<Either<Fuiler, UserModel>> Login({
+  Future<Either<Fuiler, UserModel>> login({
     required String email,
     required String password,
   }) async {
-    return dataSourceAuth.Login(email: email, password: password);
+    return dataSourceAuth.login(email: email, password: password);
   }
 
   @override
-  Future<Either<Fuiler, UserModel>> Register({
+  Future<Either<Fuiler, UserModel>> register({
     required String email,
     required String password,
     required String phone,
     required String name,
   }) async {
-    return dataSourceAuth.Register(
+    return dataSourceAuth.register(
       email: email,
       password: password,
       phone: phone,

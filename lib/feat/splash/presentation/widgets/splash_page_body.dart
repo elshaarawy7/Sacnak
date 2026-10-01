@@ -56,7 +56,7 @@ class _SplashPageBodyState extends State<SplashPageBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                ImagesApp.LogoApp, // استبدل 'logo.png' بمسار الصورة الفعلي لشعار التطبيق ,
+                ImagesApp.logoApp, // استبدل 'logo.png' بمسار الصورة الفعلي لشعار التطبيق ,
                 width: 200,
                 height: 200,
               ),

@@ -9,6 +9,10 @@ import 'package:sacny/feat/admin/add_drug/data/repo/property_repository.dart';
 import 'package:sacny/feat/admin/add_drug/data/repo/property_repository_imple.dart';
 import 'package:sacny/feat/admin/add_drug/domain/usercase/add_property_usecase.dart';
 import 'package:sacny/feat/admin/add_drug/presentation/cubit/propetry_cubit.dart';
+import 'package:sacny/feat/admin/chats_admain/data/datasource/data_source_massege_client.dart';
+import 'package:sacny/feat/admin/chats_admain/data/datasource/datasource_massege_clienrs_imple.dart';
+import 'package:sacny/feat/admin/chats_admain/data/repo/masseges_clients_repo.dart';
+import 'package:sacny/feat/admin/chats_admain/presentation/cubit/clients_massges_cubit.dart';
 import 'package:sacny/feat/admin/home_admain/data/datasourse/cart_home_admin_datasourse.dart';
 import 'package:sacny/feat/admin/home_admain/data/datasourse/cart_home_admin_datasourse_imple.dart';
 import 'package:sacny/feat/admin/home_admain/data/repo/cart_home_admin_repo.dart';
@@ -22,12 +26,12 @@ import 'package:sacny/feat/auth/data/repo/auth_repo_imple.dart';
 import 'package:sacny/feat/auth/presentation/manager/gooole/google_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/login/login_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/regester/regester_cubit.dart';
-
 import 'package:sacny/feat/client/home_client/data/datasource/client_property_details_remote_datasource.dart';
 import 'package:sacny/feat/client/home_client/data/repo/client_property_details_repo_impl.dart';
 import 'package:sacny/feat/client/home_client/domain/repo/client_property_details_repo.dart';
 import 'package:sacny/feat/client/home_client/domain/usecase/get_client_property_details_usecase.dart';
 import 'package:sacny/feat/client/home_client/presentation/cubit/client_property_details_cubit.dart';
+import 'package:sacny/feat/client/profile_client/presentation/cubit/profile_admain_cubit.dart';
 
 final getit = GetIt.instance;  
 
@@ -46,6 +50,7 @@ void getsetUp() {
   getit.registerLazySingleton<PropertyDataSource>(
     () => PropertyDataSourceImple(
       firebaseFirestore: getit(),
+      firebaseAuth: getit(),
       cloudinaryService: getit(),
     ),
   );
@@ -82,6 +87,29 @@ void getsetUp() {
   );
   getit.registerFactory<ClientPropertyDetailsCubit>(
     () => ClientPropertyDetailsCubit(getClientPropertyDetailsUseCase: getit()),
+  ); 
+
+  getit.registerFactory<ProfileClientCubit>(() => ProfileClientCubit());  
+  
+  // --- Massege Clients Feature ---
+
+  // 1. Data Source
+  getit.registerLazySingleton<MassegeClientsRemoteDataSource>(
+    () => DatasourceMassegeClienrsImple(firebaseFirestore: getit()),
+  );
+
+  // 2. Repository
+  getit.registerLazySingleton<RepoMassegeClients>(
+    () => MassegesClientsRepoImpl(
+      massegeClientsRemoteDataSource: getit(),
+    ),
+  );
+
+  // 3. Cubit
+  getit.registerFactory<MassegeClientsCubit>(
+    () => MassegeClientsCubit(
+       getit(),
+    ),
   );
 } 
 

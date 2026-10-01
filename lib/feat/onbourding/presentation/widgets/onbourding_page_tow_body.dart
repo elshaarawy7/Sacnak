@@ -20,7 +20,7 @@ class OnbourdingPageTowBody extends StatelessWidget {
             const Gap(100),
             CustomBatton(
               ontap: () {
-                context.push(AppRouter.LoginPageRote);
+                context.push(AppRouter.loginPageRoute);
               },
               text: "ابداء الان ",
             ),

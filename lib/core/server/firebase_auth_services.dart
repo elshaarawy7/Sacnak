@@ -4,10 +4,9 @@ import 'package:sacny/core/error/exption.dart';
 
 class FirebaseAuthServices {
   FirebaseAuthServices({
-    required FirebaseAuth firebaseAuth,
+    required this.firebaseAuth,
     GoogleSignIn? googleSignIn,
-  })  : _firebaseAuth = firebaseAuth,
-        _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
+  })  : _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
 
   static const String _googleServerClientId = String.fromEnvironment(
     'GOOGLE_SERVER_CLIENT_ID',
@@ -15,7 +14,7 @@ class FirebaseAuthServices {
         '105266687234-cfd1iqjvpdpdrcger7uq4lncipi9ghsr.apps.googleusercontent.com',
   );
 
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuth firebaseAuth;
   final GoogleSignIn _googleSignIn;
   bool _isGoogleSignInInitialized = false;
 
@@ -24,7 +23,7 @@ class FirebaseAuthServices {
     required String password,
   }) async {
     try {
-      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+      final credential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password,
       );
@@ -39,7 +38,7 @@ class FirebaseAuthServices {
     required String password,
   }) async {
     try {
-      final credential = await _firebaseAuth.signInWithEmailAndPassword(
+      final credential = await firebaseAuth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password,
       );
@@ -65,7 +64,7 @@ class FirebaseAuthServices {
 
       final credential = GoogleAuthProvider.credential(idToken: idToken);
       return _userFromCredential(
-        await _firebaseAuth.signInWithCredential(credential),
+        await firebaseAuth.signInWithCredential(credential),
       );
     } on CustomException {
       rethrow;
@@ -78,17 +77,17 @@ class FirebaseAuthServices {
     }
   }
 
-  Future<void> signOut() => _firebaseAuth.signOut();
+  Future<void> signOut() => firebaseAuth.signOut();
 
   Future<void> deleteUser() async {
-    final user = _firebaseAuth.currentUser;
+    final user = firebaseAuth.currentUser;
     if (user == null) {
       throw CustomException('لا يوجد مستخدم مسجل حاليًا.');
     }
     await user.delete();
   }
 
-  bool get isLoggedIn => _firebaseAuth.currentUser != null;
+  bool get isLoggedIn => firebaseAuth.currentUser != null;
 
   Future<void> _initializeGoogleSignIn() async {
     if (_isGoogleSignInInitialized) return;

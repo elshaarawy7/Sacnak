@@ -12,18 +12,26 @@ class CartHomeAdminDataSourceImple extends CartHomeAdminDataSource {
 
   CartHomeAdminDataSourceImple();
   @override
-  Future<Either<Fuiler, List<CartHomeModelAdmain>>> getProperties() async {
-     try { 
-      final snapshot = await FirebaseFirestore.instance.collection('property').get();
-  return Right(
-    snapshot.docs
-        .map((doc) => CartHomeModelAdmain.fromJson(doc.data(), id: doc.id))
-        .toList(),
-  );
-      
-     } catch (e) {
-       return Left(ServerFuiler(e.toString().replaceAll("Exception: ", "")));
-     }
-   
+  Future<Either<Fuiler, List<CartHomeModelAdmain>>> getProperties({
+    bool onlyOwnerProperties = false,
+  }) async {
+    try {
+      final currentUser = firebaseAuth.currentUser;
+      Query<Map<String, dynamic>> query = FirebaseFirestore.instance
+          .collection('property');
+
+      if (onlyOwnerProperties && currentUser != null) {
+        query = query.where('ownerId', isEqualTo: currentUser.uid);
+      }
+
+      final snapshot = await query.get();
+      return Right(
+        snapshot.docs
+            .map((doc) => CartHomeModelAdmain.fromJson(doc.data(), id: doc.id))
+            .toList(),
+      );
+    } catch (e) {
+      return Left(ServerFuiler(e.toString().replaceAll("Exception: ", "")));
+    }
   }
 } 

@@ -24,15 +24,8 @@ class LoginPageBody extends StatefulWidget {
 }
 
 class _LoginPageBodyState extends State<LoginPageBody> {
-  late int _selectedTab;
   bool _obscurePassword = true;
   bool _rememberMe = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedTab = widget.initialTab;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +46,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                   fontSize: 16.0,
                 );  
 
-                context.push(AppRouter.ChooseAcountRoute) ; 
+                context.push(AppRouter.chooseAccountRoute); 
 
               } 
               else if (state is LoginFailure) {

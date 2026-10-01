@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sacny/core/constant/colors_app.dart';
 import 'package:sacny/core/helper/app_router.dart';
 import 'package:sacny/core/widgets/custom_batton.dart';
-import 'package:sacny/feat/auth/presentation/manager/login/login_state.dart';
 import 'package:sacny/feat/auth/presentation/manager/regester/regester_cubit.dart';
 import 'package:sacny/feat/auth/presentation/manager/regester/regester_state.dart';
 import 'package:sacny/feat/auth/presentation/widgets/auth_batton.dart';
@@ -23,11 +21,6 @@ class RegisterPageBody extends StatefulWidget {
 
 class _RegisterPageBodyState extends State<RegisterPageBody> {
   bool _obscurePassword = true;
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +40,7 @@ class _RegisterPageBodyState extends State<RegisterPageBody> {
                   fontSize: 16.0,
                 ); 
 
-                context.push(AppRouter.ChooseAcountRoute) ; 
+                context.push(AppRouter.chooseAccountRoute); 
               } 
 
 

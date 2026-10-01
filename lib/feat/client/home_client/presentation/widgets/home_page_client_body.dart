@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:sacny/core/widgets/admin_apartment_card.dart';
 import 'package:sacny/core/widgets/text_filed.dart';
+import 'package:sacny/feat/admin/home_admain/domain/entity/entuty_cart_home_admin_model.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_cubit.dart';
 import 'package:sacny/feat/admin/home_admain/presentation/cubit/cart_home_admin_state.dart';
 
@@ -38,18 +39,29 @@ class _HomePageClientBodyState extends State<HomePageClientBody> {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final allProperties = state is CartHomeAdminLoaded
-            ? state.properties
-            : [];
+        final List<EntutyCartHomeAdminModel> allProperties =
+          state is CartHomeAdminLoaded ? state.properties : const [];
         final searchQuery = _searchController.text.trim().toLowerCase();
+
+        bool matchesPropertySearch(EntutyCartHomeAdminModel property) {
+          if (searchQuery.isEmpty) {
+            return true;
+          }
+
+          final haystacks = <String>[
+            property.title,
+            property.city,
+            ...property.nearbyUniversities,
+          ];
+
+          return haystacks.any(
+            (value) => value.toLowerCase().contains(searchQuery),
+          );
+        }
 
         final filteredProperties = searchQuery.isEmpty
             ? allProperties
-            : allProperties
-                  .where(
-                    (prop) => prop.title.toLowerCase().contains(searchQuery),
-                  )
-                  .toList();
+            : allProperties.where(matchesPropertySearch).toList();
 
         return CustomScrollView(
           slivers: [
@@ -82,7 +94,7 @@ class _HomePageClientBodyState extends State<HomePageClientBody> {
                   itemCount: filteredProperties.length,
                   itemBuilder: (context, index) {
                     final property = filteredProperties[index];
-                    return HomeApartmentCard(property: property);
+                    return HomeApartmentCard(property: property, isAdmin: false);
                   },
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 16),

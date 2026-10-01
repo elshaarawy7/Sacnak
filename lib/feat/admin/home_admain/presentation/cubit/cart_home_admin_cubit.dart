@@ -13,9 +13,11 @@ class CartHomeAdminCubit extends Cubit<CartHomeAdminState> {
       return BlocProvider.of<CartHomeAdminCubit>(context);
     }
 
-  Future<void> getProperties() async {
+  Future<void> getProperties({bool onlyOwnerProperties = false}) async {
     emit(CartHomeAdminLoading());
-    final result = await cartHomeAdminRepoImple.getProperties();
+    final result = await cartHomeAdminRepoImple.getProperties(
+      onlyOwnerProperties: onlyOwnerProperties,
+    );
     result.fold(
       (failure) => emit(CartHomeAdminError(error: failure)),
       (properties) => emit(CartHomeAdminLoaded(properties: properties)),

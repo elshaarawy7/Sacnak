@@ -4,6 +4,8 @@ class CartHomeModelAdmain extends EntutyCartHomeAdminModel {
   CartHomeModelAdmain({
     required super.id,
     required super.title,
+    required super.city,
+    required super.nearbyUniversities,
     required super.price,
     required super.totalBeds,
     required super.occupiedBeds,
@@ -21,6 +23,10 @@ class CartHomeModelAdmain extends EntutyCartHomeAdminModel {
     final street = json['street'] ?? '';
     final apartmentNumber = json['apartmentNumber'] ?? '';
     final title = '$city - $street - شقة $apartmentNumber'.trim();
+    final nearbyUniversities = (json['nearbyUniversities'] as List<dynamic>?)
+        ?.map((e) => e.toString())
+        .toList() ??
+      const [];
 
     // price stored as double in Firestore
     final price = ((json['price'] as num?) ?? 0).toInt();
@@ -49,6 +55,8 @@ class CartHomeModelAdmain extends EntutyCartHomeAdminModel {
     return CartHomeModelAdmain(
       id: id,
       title: title,
+      city: city.toString(),
+      nearbyUniversities: nearbyUniversities,
       price: price,
       totalBeds: totalBeds,
       occupiedBeds: occupiedBeds.clamp(0, totalBeds).toInt(),

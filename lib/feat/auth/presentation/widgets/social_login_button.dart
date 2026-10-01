@@ -28,7 +28,7 @@ class SocialLoginButton extends StatelessWidget {
              textColor: Colors.white, 
              fontSize: 16
           ); 
-context.push(AppRouter.ChooseAcountRoute) ; 
+          context.push(AppRouter.chooseAccountRoute); 
           
         }  
 
@@ -73,7 +73,7 @@ context.push(AppRouter.ChooseAcountRoute) ;
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(ImagesApp.LogoGoogle),
+                Image.asset(ImagesApp.logoGoogle),
                 const Gap(10),
                 const Text(
                   "سجل الان بواسطه جوجل",

@@ -6,4 +6,4 @@ class ProfileAdminFailure extends ProfileAdminState {
   final String errorMessage;
 
   ProfileAdminFailure({required this.errorMessage});
-}
+} 
